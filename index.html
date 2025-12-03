@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>我的空间 · LOONOOL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- 整个页面包裹 -->
+    <div class="page-root">
+      <!-- 顶部导航栏 -->
+      <header class="navbar">
+        <div class="navbar-inner">
+          <!-- 左侧 Logo + 文案 -->
+          <div class="nav-left">
+            <div class="logo-mark">L</div>
+            <div class="logo-text-group">
+              <span class="logo-title">LOONOOL</span>
+              <span class="logo-subtitle">图片审核空间</span>
+            </div>
+          </div>
+
+          <!-- 右侧导航链接 + 用户头像 -->
+          <nav class="nav-right">
+            <a href="#" class="nav-link">首页 Home</a>
+            <a href="#" class="nav-link active">我的空间 My Spaces</a>
+            <a href="#" class="nav-link">帮助中心 Help</a>
+
+            <!-- 用户头像 + 下拉菜单 -->
+            <div class="nav-user" id="nav-user">
+              <button
+                class="user-trigger"
+                id="user-menu-trigger"
+                type="button"
+              >
+                <div class="user-avatar" id="user-avatar">JX</div>
+                <span class="user-name" id="user-name">Jinxi</span>
+                <span class="user-caret"></span>
+              </button>
+
+              <div class="user-dropdown" id="user-dropdown">
+                <button
+                  type="button"
+                  class="user-dropdown-item"
+                  onclick="goToProfile()"
+                >
+                  个人中心
+                </button>
+                <button
+                  type="button"
+                  class="user-dropdown-item"
+                  onclick="goToMySpaces()"
+                >
+                  我的空间
+                </button>
+                <div class="user-dropdown-divider"></div>
+                <button
+                  type="button"
+                  class="user-dropdown-item danger"
+                  onclick="logout()"
+                >
+                  退出登录
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- 主体内容：我的空间 -->
+      <main class="my-spaces-page">
+        <!-- 顶部标题区域 -->
+        <header class="my-spaces-header">
+          <div class="header-title">
+            <h1>我的空间</h1>
+            <p class="subtitle">My Spaces · 管理你的图片审核空间</p>
+          </div>
+
+          <div class="header-actions">
+            <button class="btn-primary" onclick="createSpace()">
+              创建新的审核空间
+            </button>
+          </div>
+        </header>
+
+        <!-- 内容区域 -->
+        <section class="my-spaces-content">
+          <!-- 有数据时显示表格 -->
+          <div id="spaces-table-wrapper" class="table-wrapper">
+            <table class="spaces-table">
+              <thead>
+                <tr>
+                  <th>空间名称</th>
+                  <th>创建者</th>
+                  <th>任务数量</th>
+                  <th>最近更新时间</th>
+                  <th>状态</th>
+                  <th class="th-actions">操作</th>
+                </tr>
+              </thead>
+              <tbody id="spaces-tbody">
+                <!-- JS 动态插入行 -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 空状态（当没有任何 Space 时显示） -->
+          <div id="empty-state" class="empty-state" style="display: none;">
+            <h2>还没有任何审核空间</h2>
+            <p>
+              创建一个 Space，用任务（Task）管理图片审核，和团队一起做出可放心使用的视觉决策。
+            </p>
+            <button class="btn-primary" onclick="createSpace()">
+              创建你的第一个图片审核空间
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
